@@ -7,6 +7,7 @@ import {
   SidebarHeader,
   SidebarContent,
   SidebarInset,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -39,13 +40,13 @@ export default function Home() {
   return (
     <SidebarProvider>
       <Sidebar>
-        <SidebarHeader>
+        <SidebarHeader className="hidden md:flex">
           <div className="flex items-center gap-3">
             <Logo />
             <h1 className="text-2xl font-bold font-headline text-primary">Parko Khoj</h1>
           </div>
         </SidebarHeader>
-        <SidebarContent>
+        <SidebarContent className="flex flex-col">
           <div className="flex flex-col gap-4 p-4">
             <Input
               placeholder="Search by name or address..."
@@ -64,23 +65,33 @@ export default function Home() {
             </div>
           </div>
           <Separator />
-          <ScrollArea className="h-[calc(100%-10rem)]">
-            <ParkingList
-              locations={filteredLocations}
-              selectedLocation={selectedLocation}
-              onSelectLocation={setSelectedLocation}
-            />
-          </ScrollArea>
+          <div className="flex-1 overflow-hidden">
+            <ScrollArea className="h-full">
+              <ParkingList
+                locations={filteredLocations}
+                selectedLocation={selectedLocation}
+                onSelectLocation={setSelectedLocation}
+              />
+            </ScrollArea>
+          </div>
         </SidebarContent>
       </Sidebar>
       <SidebarInset>
-        <main className="h-full p-4">
+        <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-background p-2 md:hidden">
+            <div className="flex items-center gap-3">
+                <Logo className="!p-1.5" />
+                 <h1 className="text-xl font-bold font-headline text-primary">Parko Khoj</h1>
+            </div>
+            <SidebarTrigger />
+        </header>
+
+        <div className="p-2 md:p-4">
           {selectedLocation ? (
             <ParkingDetails location={selectedLocation} />
           ) : (
             <WelcomePlaceholder />
           )}
-        </main>
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );

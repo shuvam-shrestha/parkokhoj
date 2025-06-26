@@ -28,9 +28,9 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
   const mapSrc = `https://maps.google.com/maps?q=${location.coords.lat},${location.coords.lng}&t=k&z=18&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <Card className="h-full overflow-hidden flex flex-col animate-in fade-in-50 duration-500">
+    <Card className="overflow-hidden flex flex-col animate-in fade-in-50 duration-500">
       <CardHeader>
-        <CardTitle className="text-3xl font-headline">{location.name}</CardTitle>
+        <CardTitle className="text-2xl md:text-3xl font-headline">{location.name}</CardTitle>
         <CardDescription>{location.address}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col gap-4">
