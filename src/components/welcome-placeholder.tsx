@@ -6,7 +6,7 @@ export function WelcomePlaceholder() {
       <div className="w-full">
         <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-md">
             <iframe 
-                src="https://www.youtube.com/embed/gq3-BAnwG4g?autoplay=1&mute=1&loop=1&playlist=gq3-BAnwG4g&controls=0&showinfo=0&modestbranding=1" 
+                src="https://www.youtube.com/embed/WO9hnw9Nxpw?autoplay=1&mute=1&loop=1&playlist=WO9hnw9Nxpw&controls=0&showinfo=0&modestbranding=1" 
                 title="How to park a car" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
