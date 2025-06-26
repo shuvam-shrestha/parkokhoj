@@ -9,6 +9,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Bike, Car } from "lucide-react";
+import { BookingForm } from "./booking-form";
 
 type ParkingDetailsProps = {
   location: ParkingLocation;
@@ -93,6 +94,7 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
               </div>
             )}
           </div>
+          <BookingForm />
         </div>
       </CardContent>
     </Card>
