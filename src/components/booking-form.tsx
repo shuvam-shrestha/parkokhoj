@@ -24,8 +24,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const bookingFormSchema = z.object({
+  vehicleType: z.enum(["two-wheeler", "four-wheeler"], {
+    required_error: "You need to select a vehicle type.",
+  }),
   riderName: z.string().min(2, { message: "Name must be at least 2 characters." }),
   vehicleNo: z.string().min(4, { message: "Please enter a valid vehicle number." }),
   incomingTime: z.string().regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, {
@@ -92,6 +96,40 @@ export function BookingForm() {
         {state === "form" && (
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
+               <FormField
+                control={form.control}
+                name="vehicleType"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel>Vehicle Type</FormLabel>
+                    <FormControl>
+                      <RadioGroup
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        className="flex items-center space-x-4"
+                      >
+                        <FormItem className="flex items-center space-x-2 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="two-wheeler" />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            2-Wheeler
+                          </FormLabel>
+                        </FormItem>
+                        <FormItem className="flex items-center space-x-2 space-y-0">
+                          <FormControl>
+                            <RadioGroupItem value="four-wheeler" />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            4-Wheeler
+                          </FormLabel>
+                        </FormItem>
+                      </RadioGroup>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="riderName"
