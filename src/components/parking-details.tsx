@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ParkingLocation } from "@/types";
 import {
   Card,
@@ -25,6 +24,8 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
       location.availability.fourWheeler.total) *
     100;
 
+  const mapSrc = `https://maps.google.com/maps?q=${location.coords.lat},${location.coords.lng}&t=k&z=18&ie=UTF8&iwloc=&output=embed`;
+
   return (
     <Card className="h-full overflow-hidden flex flex-col animate-in fade-in-50 duration-500">
       <CardHeader>
@@ -33,14 +34,18 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
       </CardHeader>
       <CardContent className="flex-grow flex flex-col gap-4">
         <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-md">
-          <Image
-            src={location.image}
-            alt={`View of ${location.name}`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            data-ai-hint="parking lot"
-          />
+          <iframe
+            src={mapSrc}
+            width="100%"
+            height="100%"
+            title={`Satellite view of ${location.name}`}
+            aria-label={`Satellite view of ${location.name}`}
+            frameBorder="0"
+            scrolling="no"
+            className="absolute top-0 left-0 w-full h-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
 
         <Separator />
