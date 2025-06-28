@@ -14,6 +14,13 @@ import { Separator } from "@/components/ui/separator";
 import { Bike, Car, Camera, Map } from "lucide-react";
 import { BookingForm } from "./booking-form";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 type ParkingDetailsProps = {
   location: ParkingLocation;
@@ -74,49 +81,101 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
         
         <Separator />
 
-        <div className="space-y-6">
-          <h3 className="text-xl font-semibold">Availability</h3>
-          <div className="space-y-4">
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Availability & Pricing</h3>
+          <Accordion type="single" collapsible className="w-full">
             {location.availability.twoWheeler.total > 0 && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Bike className="h-6 w-6 text-primary" />
-                  <div className="flex-grow">
-                    <div className="flex justify-between items-baseline">
-                      <p className="font-medium">2-Wheeler</p>
-                      <p className="text-sm text-muted-foreground">
-                        <span className="font-bold text-foreground">
-                          {location.availability.twoWheeler.available}
-                        </span>
-                        /{location.availability.twoWheeler.total} available
-                      </p>
+              <AccordionItem value="two-wheeler">
+                <AccordionTrigger className="hover:no-underline p-3">
+                  <div className="flex items-center gap-3 w-full">
+                    <Bike className="h-6 w-6 text-primary" />
+                    <div className="flex-grow">
+                      <div className="flex justify-between items-baseline">
+                        <p className="font-medium">2-Wheeler</p>
+                        <p className="text-sm text-muted-foreground">
+                          <span className="font-bold text-foreground">
+                            {location.availability.twoWheeler.available}
+                          </span>
+                          /{location.availability.twoWheeler.total} available
+                        </p>
+                      </div>
+                      <Progress value={twoWheelerPercentage} className="h-2 mt-1" />
                     </div>
-                    <Progress value={twoWheelerPercentage} className="h-2 mt-1" />
                   </div>
-                </div>
-              </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="p-4 -mt-2 bg-muted/50 rounded-b-md">
+                    {location.availability.twoWheeler.pricing && (
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2">Pricing Details</h4>
+                        <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
+                          {location.availability.twoWheeler.pricing.perHour && <li>Per Hour: <span className="text-foreground font-medium">NPR {location.availability.twoWheeler.pricing.perHour}</span></li>}
+                          {location.availability.twoWheeler.pricing.longHours && <li>Long Hours: <span className="text-foreground font-medium">{location.availability.twoWheeler.pricing.longHours}</span></li>}
+                          {location.availability.twoWheeler.pricing.everyday && <li>Everyday: <span className="text-foreground font-medium">{location.availability.twoWheeler.pricing.everyday}</span></li>}
+                        </ul>
+                      </div>
+                    )}
+                    {location.availability.twoWheeler.amenities && location.availability.twoWheeler.amenities.length > 0 && (
+                      <div>
+                        <h4 className="font-semibold mb-2">Amenities</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {location.availability.twoWheeler.amenities.map(amenity => (
+                            <Badge key={amenity} variant="secondary" className="font-normal">{amenity}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             )}
 
             {location.availability.fourWheeler.total > 0 && (
-               <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Car className="h-6 w-6 text-primary" />
-                  <div className="flex-grow">
-                    <div className="flex justify-between items-baseline">
-                      <p className="font-medium">4-Wheeler</p>
-                      <p className="text-sm text-muted-foreground">
-                        <span className="font-bold text-foreground">
-                          {location.availability.fourWheeler.available}
-                        </span>
-                        /{location.availability.fourWheeler.total} available
-                      </p>
+              <AccordionItem value="four-wheeler">
+                <AccordionTrigger className="hover:no-underline p-3">
+                   <div className="flex items-center gap-3 w-full">
+                      <Car className="h-6 w-6 text-primary" />
+                      <div className="flex-grow">
+                        <div className="flex justify-between items-baseline">
+                          <p className="font-medium">4-Wheeler</p>
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-bold text-foreground">
+                              {location.availability.fourWheeler.available}
+                            </span>
+                            /{location.availability.fourWheeler.total} available
+                          </p>
+                        </div>
+                        <Progress value={fourWheelerPercentage} className="h-2 mt-1" />
+                      </div>
                     </div>
-                    <Progress value={fourWheelerPercentage} className="h-2 mt-1" />
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="p-4 -mt-2 bg-muted/50 rounded-b-md">
+                    {location.availability.fourWheeler.pricing && (
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2">Pricing Details</h4>
+                        <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
+                          {location.availability.fourWheeler.pricing.perHour && <li>Per Hour: <span className="text-foreground font-medium">NPR {location.availability.fourWheeler.pricing.perHour}</span></li>}
+                          {location.availability.fourWheeler.pricing.longHours && <li>Long Hours: <span className="text-foreground font-medium">{location.availability.fourWheeler.pricing.longHours}</span></li>}
+                          {location.availability.fourWheeler.pricing.everyday && <li>Everyday: <span className="text-foreground font-medium">{location.availability.fourWheeler.pricing.everyday}</span></li>}
+                        </ul>
+                      </div>
+                    )}
+                    {location.availability.fourWheeler.amenities && location.availability.fourWheeler.amenities.length > 0 && (
+                      <div>
+                        <h4 className="font-semibold mb-2">Amenities</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {location.availability.fourWheeler.amenities.map(amenity => (
+                            <Badge key={amenity} variant="secondary" className="font-normal">{amenity}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
             )}
-          </div>
+          </Accordion>
           <BookingForm />
         </div>
       </CardContent>

@@ -4,8 +4,26 @@ export type ParkingLocation = {
   address: string;
   coords: { lat: number; lng: number };
   availability: {
-    twoWheeler: { total: number; available: number };
-    fourWheeler: { total: number; available: number };
+    twoWheeler: {
+      total: number;
+      available: number;
+      pricing?: {
+        perHour: number;
+        longHours: string;
+        everyday: string;
+      };
+      amenities?: string[];
+    };
+    fourWheeler: {
+      total: number;
+      available: number;
+      pricing?: {
+        perHour: number;
+        longHours: string;
+        everyday: string;
+      };
+      amenities?: string[];
+    };
   };
   image: string;
   isMonthly: boolean;
