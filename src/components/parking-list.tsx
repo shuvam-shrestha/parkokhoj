@@ -63,6 +63,18 @@ export function ParkingList({
               </div>
             </div>
             <p className="text-sm text-muted-foreground">{location.address}</p>
+             <div className="flex items-center gap-2 text-xs mt-1 w-full">
+              <span
+                className={cn(
+                  'h-2 w-2 rounded-full shrink-0',
+                  location.isOpen ? 'bg-green-500' : 'bg-orange-500'
+                )}
+                aria-hidden="true"
+              />
+              <span className={cn(location.isOpen ? 'text-green-700' : 'text-orange-700', 'dark:text-current')}>
+                {location.isOpen ? `Open until ${location.closingTime}` : 'Closed'}
+              </span>
+            </div>
           </Button>
         );
       })}

@@ -15,7 +15,7 @@ export const parkingLocations: ParkingLocation[] = [
           longHours: "NPR 150 for 8 hours",
           everyday: "NPR 3,000/month"
         },
-        amenities: ["CCTV", "Covered Parking", "Restroom"]
+        amenities: ["CCTV", "Covered Parking", "Restroom", "E-Sewa Accepted"]
       },
       fourWheeler: { 
         total: 50, 
@@ -25,11 +25,13 @@ export const parkingLocations: ParkingLocation[] = [
           longHours: "NPR 500 for 8 hours",
           everyday: "NPR 8,000/month"
         },
-        amenities: ["CCTV", "Covered Parking", "Valet"]
+        amenities: ["CCTV", "Covered Parking", "Valet", "Khalti Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "10:00 PM"
   },
   {
     id: '2',
@@ -45,7 +47,7 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "NPR 200 for 8 hours",
             everyday: "N/A"
         },
-        amenities: ["CCTV", "Security Guard"]
+        amenities: ["CCTV", "Security Guard", "Cash Only"]
       },
       fourWheeler: { 
         total: 30, 
@@ -55,11 +57,13 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "NPR 700 for 8 hours",
             everyday: "N/A"
         },
-        amenities: ["CCTV", "Security Guard", "Valet"]
+        amenities: ["CCTV", "Security Guard", "Valet", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: true,
+    closingTime: "11:00 PM"
   },
   {
     id: '3',
@@ -75,7 +79,7 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "NPR 120 for 8 hours",
             everyday: "NPR 2,500/month"
         },
-        amenities: ["Covered Parking", "Helmet Storage"]
+        amenities: ["Covered Parking", "Helmet Storage", "E-Sewa Accepted"]
       },
       fourWheeler: { 
         total: 0, 
@@ -84,6 +88,8 @@ export const parkingLocations: ParkingLocation[] = [
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "9:30 PM"
   },
   {
     id: '4',
@@ -99,7 +105,7 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "NPR 140 for 8 hours",
             everyday: "N/A"
         },
-        amenities: ["CCTV", "Open Air"]
+        amenities: ["CCTV", "Open Air", "Cash Only"]
       },
       fourWheeler: { 
         total: 40, 
@@ -109,11 +115,13 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "NPR 450 for 8 hours",
             everyday: "N/A"
         },
-        amenities: ["CCTV", "Open Air"]
+        amenities: ["CCTV", "Open Air", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: false,
+    closingTime: "8:00 PM"
   },
   {
     id: '5',
@@ -129,7 +137,7 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "Free for first 2 hours",
             everyday: "NPR 2,000/month"
         },
-        amenities: ["Covered Parking", "CCTV", "Shopping Cart Access"]
+        amenities: ["Covered Parking", "CCTV", "Shopping Cart Access", "Fonepay Accepted"]
       },
       fourWheeler: { 
         total: 100, 
@@ -139,11 +147,13 @@ export const parkingLocations: ParkingLocation[] = [
             longHours: "Free for first 2 hours",
             everyday: "NPR 6,000/month"
         },
-        amenities: ["Covered Parking", "CCTV", "Shopping Cart Access", "EV Charging"]
+        amenities: ["Covered Parking", "CCTV", "Shopping Cart Access", "EV Charging", "Fonepay Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "8:30 PM"
   },
   {
     id: '6',
@@ -155,17 +165,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 80,
         available: 15,
         pricing: { perHour: 30, longHours: "NPR 200 for 8h", everyday: "N/A" },
-        amenities: ["Security Guard", "Open Air"]
+        amenities: ["Security Guard", "Open Air", "Cash Only"]
       },
       fourWheeler: {
         total: 10,
         available: 1,
         pricing: { perHour: 100, longHours: "NPR 700 for 8h", everyday: "N/A" },
-        amenities: ["Security Guard", "Open Air"]
+        amenities: ["Security Guard", "Open Air", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: true,
+    closingTime: "7:00 PM"
   },
   {
     id: '7',
@@ -177,17 +189,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 120,
         available: 30,
         pricing: { perHour: 20, longHours: "NPR 150 for 8h", everyday: "NPR 2,800/month" },
-        amenities: ["CCTV", "Restroom"]
+        amenities: ["CCTV", "Restroom", "E-Sewa Accepted"]
       },
       fourWheeler: {
         total: 60,
         available: 10,
         pricing: { perHour: 60, longHours: "NPR 400 for 8h", everyday: "NPR 7,000/month" },
-        amenities: ["CCTV", "Restroom"]
+        amenities: ["CCTV", "Restroom", "E-Sewa Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
-    isMonthly: false,
+    isMonthly: true,
+    isOpen: true,
+    closingTime: "9:00 PM"
   },
   {
     id: '8',
@@ -199,17 +213,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 250,
         available: 80,
         pricing: { perHour: 25, longHours: "NPR 180 for 8h", everyday: "NPR 3,500/month" },
-        amenities: ["Covered Parking", "CCTV", "Elevator"]
+        amenities: ["Covered Parking", "CCTV", "Elevator", "Khalti Accepted"]
       },
       fourWheeler: {
         total: 80,
         available: 20,
         pricing: { perHour: 80, longHours: "NPR 550 for 8h", everyday: "NPR 9,000/month" },
-        amenities: ["Covered Parking", "CCTV", "Elevator", "EV Charging"]
+        amenities: ["Covered Parking", "CCTV", "Elevator", "EV Charging", "Khalti Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "10:00 PM"
   },
   {
     id: '9',
@@ -221,17 +237,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 100,
         available: 40,
         pricing: { perHour: 15, longHours: "NPR 100 for 8h", everyday: "N/A" },
-        amenities: ["Open Air"]
+        amenities: ["Open Air", "Cash Only"]
       },
       fourWheeler: {
         total: 20,
         available: 5,
         pricing: { perHour: 50, longHours: "NPR 350 for 8h", everyday: "N/A" },
-        amenities: ["Open Air"]
+        amenities: ["Open Air", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: true,
+    closingTime: "8:00 PM"
   },
   {
     id: '10',
@@ -243,17 +261,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 400,
         available: 150,
         pricing: { perHour: 25, longHours: "NPR 180 for 8h", everyday: "NPR 4,000/month" },
-        amenities: ["Covered Parking", "CCTV", "Security Guard"]
+        amenities: ["Covered Parking", "CCTV", "Security Guard", "Fonepay Accepted"]
       },
       fourWheeler: {
         total: 120,
         available: 25,
         pricing: { perHour: 80, longHours: "NPR 600 for 8h", everyday: "NPR 10,000/month" },
-        amenities: ["Covered Parking", "CCTV", "Security Guard", "Valet"]
+        amenities: ["Covered Parking", "CCTV", "Security Guard", "Valet", "Fonepay Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "10:30 PM"
   },
   {
     id: '11',
@@ -265,17 +285,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 300,
         available: 100,
         pricing: { perHour: 15, longHours: "NPR 100 for 8h", everyday: "NPR 2,000/month" },
-        amenities: ["Open Air", "Restroom"]
+        amenities: ["Open Air", "Restroom", "Cash Only"]
       },
       fourWheeler: {
         total: 50,
         available: 15,
         pricing: { perHour: 40, longHours: "NPR 300 for 8h", everyday: "NPR 5,000/month" },
-        amenities: ["Open Air", "Restroom"]
+        amenities: ["Open Air", "Restroom", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
-    isMonthly: false,
+    isMonthly: true,
+    isOpen: true,
+    closingTime: "11:00 PM"
   },
   {
     id: '12',
@@ -287,17 +309,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 180,
         available: 90,
         pricing: { perHour: 20, longHours: "NPR 140 for 8h", everyday: "NPR 2,500/month" },
-        amenities: ["CCTV"]
+        amenities: ["CCTV", "E-Sewa Accepted"]
       },
       fourWheeler: {
         total: 35,
         available: 8,
         pricing: { perHour: 60, longHours: "NPR 450 for 8h", everyday: "NPR 6,500/month" },
-        amenities: ["CCTV"]
+        amenities: ["CCTV", "E-Sewa Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "9:00 PM"
   },
   {
     id: '13',
@@ -309,17 +333,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 220,
         available: 60,
         pricing: { perHour: 25, longHours: "NPR 180 for 8h", everyday: "N/A" },
-        amenities: ["Security Guard", "Restroom"]
+        amenities: ["Security Guard", "Restroom", "Cash Only"]
       },
       fourWheeler: {
         total: 40,
         available: 12,
         pricing: { perHour: 70, longHours: "NPR 500 for 8h", everyday: "N/A" },
-        amenities: ["Security Guard", "Restroom"]
+        amenities: ["Security Guard", "Restroom", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: true,
+    closingTime: "8:00 PM"
   },
   {
     id: '14',
@@ -331,17 +357,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 150,
         available: 55,
         pricing: { perHour: 20, longHours: "NPR 150 for 8h", everyday: "NPR 3,000/month" },
-        amenities: ["CCTV", "Covered Area"]
+        amenities: ["CCTV", "Covered Area", "Khalti Accepted"]
       },
       fourWheeler: {
         total: 50,
         available: 18,
         pricing: { perHour: 50, longHours: "NPR 380 for 8h", everyday: "NPR 7,500/month" },
-        amenities: ["CCTV", "Covered Area"]
+        amenities: ["CCTV", "Covered Area", "Khalti Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "9:00 PM"
   },
   {
     id: '15',
@@ -353,17 +381,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 100,
         available: 35,
         pricing: { perHour: 15, longHours: "NPR 100 for 8h", everyday: "N/A" },
-        amenities: ["Open Air", "Industrial Zone"]
+        amenities: ["Open Air", "Industrial Zone", "Cash Only"]
       },
       fourWheeler: {
         total: 70,
         available: 25,
         pricing: { perHour: 40, longHours: "NPR 300 for 8h", everyday: "N/A" },
-        amenities: ["Open Air", "Industrial Zone"]
+        amenities: ["Open Air", "Industrial Zone", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: false,
+    closingTime: "6:00 PM"
   },
   {
     id: '16',
@@ -375,17 +405,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 90,
         available: 45,
         pricing: { perHour: 15, longHours: "NPR 120 for 8h", everyday: "NPR 2,200/month" },
-        amenities: ["Riverside View", "Open Air"]
+        amenities: ["Riverside View", "Open Air", "E-Sewa Accepted"]
       },
       fourWheeler: {
         total: 20,
         available: 9,
         pricing: { perHour: 50, longHours: "NPR 350 for 8h", everyday: "NPR 5,500/month" },
-        amenities: ["Riverside View", "Open Air"]
+        amenities: ["Riverside View", "Open Air", "E-Sewa Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "7:30 PM"
   },
   {
     id: '17',
@@ -397,17 +429,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 200,
         available: 110,
         pricing: { perHour: 10, longHours: "NPR 80 for 8h", everyday: "N/A" },
-        amenities: ["Open Air"]
+        amenities: ["Open Air", "Cash Only"]
       },
       fourWheeler: {
         total: 50,
         available: 22,
         pricing: { perHour: 30, longHours: "NPR 200 for 8h", everyday: "N/A" },
-        amenities: ["Open Air"]
+        amenities: ["Open Air", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: true,
+    closingTime: "9:00 PM"
   },
   {
     id: '18',
@@ -419,17 +453,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 70,
         available: 28,
         pricing: { perHour: 20, longHours: "NPR 150 for 8h", everyday: "NPR 2,800/month" },
-        amenities: ["Temple Proximity"]
+        amenities: ["Temple Proximity", "Cash Only"]
       },
       fourWheeler: {
         total: 15,
         available: 4,
         pricing: { perHour: 60, longHours: "NPR 450 for 8h", everyday: "NPR 7,000/month" },
-        amenities: ["Temple Proximity"]
+        amenities: ["Temple Proximity", "Cash Only"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "8:30 PM"
   },
   {
     id: '19',
@@ -441,17 +477,19 @@ export const parkingLocations: ParkingLocation[] = [
         total: 130,
         available: 60,
         pricing: { perHour: 20, longHours: "NPR 140 for 8h", everyday: "N/A" },
-        amenities: ["CCTV", "Restroom"]
+        amenities: ["CCTV", "Restroom", "Fonepay Accepted"]
       },
       fourWheeler: {
         total: 30,
         available: 7,
         pricing: { perHour: 50, longHours: "NPR 380 for 8h", everyday: "N/A" },
-        amenities: ["CCTV", "Restroom"]
+        amenities: ["CCTV", "Restroom", "Fonepay Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: false,
+    isOpen: false,
+    closingTime: "9:00 PM"
   },
   {
     id: '20',
@@ -463,16 +501,18 @@ export const parkingLocations: ParkingLocation[] = [
         total: 250,
         available: 100,
         pricing: { perHour: 30, longHours: "NPR 200 for 8h", everyday: "NPR 3,500/month" },
-        amenities: ["Security Guard", "Heritage Site"]
+        amenities: ["Security Guard", "Heritage Site", "E-Sewa Accepted"]
       },
       fourWheeler: {
         total: 60,
         available: 15,
         pricing: { perHour: 100, longHours: "NPR 700 for 8h", everyday: "NPR 8,500/month" },
-        amenities: ["Security Guard", "Heritage Site"]
+        amenities: ["Security Guard", "Heritage Site", "E-Sewa Accepted"]
       },
     },
     image: 'https://placehold.co/600x400.png',
     isMonthly: true,
+    isOpen: true,
+    closingTime: "7:00 PM"
   },
 ];

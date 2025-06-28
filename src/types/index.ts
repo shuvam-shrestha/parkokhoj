@@ -27,4 +27,6 @@ export type ParkingLocation = {
   };
   image: string;
   isMonthly: boolean;
+  isOpen: boolean;
+  closingTime: string;
 };

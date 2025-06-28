@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 type ParkingDetailsProps = {
   location: ParkingLocation;
@@ -48,6 +49,18 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
       <CardHeader>
         <CardTitle className="text-2xl md:text-3xl font-headline">{location.name}</CardTitle>
         <CardDescription>{location.address}</CardDescription>
+        <div className="flex items-center gap-2 pt-1">
+          <span
+            className={cn(
+              "h-2.5 w-2.5 shrink-0 rounded-full",
+              location.isOpen ? "bg-green-500" : "bg-orange-500"
+            )}
+            aria-hidden="true"
+          />
+          <span className="text-sm font-medium">
+            {location.isOpen ? `Open until ${location.closingTime}` : `Closed`}
+          </span>
+        </div>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col gap-4">
         <div>

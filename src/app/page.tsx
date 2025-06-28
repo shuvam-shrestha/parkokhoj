@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import {
   SidebarProvider,
   Sidebar,
@@ -104,14 +105,18 @@ export default function Home() {
     });
   }, [searchTerm, showMonthly, userLocation, radius]);
 
+  const handleLogoClick = () => {
+    setSelectedLocation(null);
+  }
+
   return (
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader className="hidden md:flex">
-          <div className="flex items-center gap-3">
+          <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3">
             <Logo />
             <h1 className="text-2xl font-bold font-headline text-primary">Parko Khoj</h1>
-          </div>
+          </Link>
         </SidebarHeader>
         <SidebarContent className="flex flex-col">
           <div className="flex flex-col gap-4 p-4">
@@ -179,14 +184,14 @@ export default function Home() {
       </Sidebar>
       <SidebarInset>
         <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-background p-2 md:hidden">
-            <div className="flex items-center gap-3">
+            <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3">
                 <Logo className="!p-1.5" />
                  <h1 className="text-xl font-bold font-headline text-primary">Parko Khoj</h1>
-            </div>
+            </Link>
             <SidebarTrigger />
         </header>
 
-        <div className="p-2 md:p-4">
+        <div className="p-2 md:p-4 min-w-0">
           {selectedLocation ? (
             <ParkingDetails location={selectedLocation} />
           ) : (
