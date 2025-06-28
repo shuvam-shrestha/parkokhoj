@@ -14,9 +14,14 @@ import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
+import { LocateFixed } from "lucide-react";
 
 import { parkingLocations } from "@/lib/data";
 import type { ParkingLocation } from "@/types";
+import { haversineDistance } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 import { Logo } from "@/components/logo";
 import { ParkingList } from "@/components/parking-list";
@@ -27,15 +32,77 @@ export default function Home() {
   const [selectedLocation, setSelectedLocation] = React.useState<ParkingLocation | null>(null);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [showMonthly, setShowMonthly] = React.useState(false);
+  const [userLocation, setUserLocation] = React.useState<{ lat: number; lng: number } | null>(null);
+  const [radius, setRadius] = React.useState(5); // Default radius 5km
+  const [isLocating, setIsLocating] = React.useState(false);
+  const { toast } = useToast();
+
+  const handleGetUserLocation = () => {
+    setIsLocating(true);
+    if (!navigator.geolocation) {
+      toast({
+        variant: "destructive",
+        title: "Geolocation Error",
+        description: "Geolocation is not supported by your browser.",
+      });
+      setIsLocating(false);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const newLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        setUserLocation(newLocation);
+        setIsLocating(false);
+        // Automatically select the closest location
+        const sortedByDistance = [...parkingLocations].sort((a, b) => {
+            const distA = haversineDistance(newLocation, a.coords);
+            const distB = haversineDistance(newLocation, b.coords);
+            return distA - distB;
+        });
+        if (sortedByDistance.length > 0 && haversineDistance(newLocation, sortedByDistance[0].coords) <= radius) {
+            setSelectedLocation(sortedByDistance[0]);
+        }
+        toast({
+          title: "Location Found",
+          description: "Filtering parking spots near you.",
+        });
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+        toast({
+          variant: "destructive",
+          title: "Geolocation Error",
+          description: "Could not get your location. Please check browser permissions.",
+        });
+        setIsLocating(false);
+      }
+    );
+  };
 
   const filteredLocations = React.useMemo(() => {
-    return parkingLocations.filter((location) => {
+    let locations = [...parkingLocations];
+
+    if (userLocation) {
+        locations = locations.filter((location) => {
+            const distance = haversineDistance(userLocation, location.coords);
+            return distance <= radius;
+        }).sort((a, b) => {
+            const distA = haversineDistance(userLocation, a.coords);
+            const distB = haversineDistance(userLocation, b.coords);
+            return distA - distB;
+        });
+    }
+
+    return locations.filter((location) => {
       const matchesSearch = location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             location.address.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesMonthly = !showMonthly || location.isMonthly;
       return matchesSearch && matchesMonthly;
     });
-  }, [searchTerm, showMonthly]);
+  }, [searchTerm, showMonthly, userLocation, radius]);
 
   return (
     <SidebarProvider>
@@ -63,6 +130,39 @@ export default function Home() {
               />
               <Label htmlFor="monthly-parking">Everyday Parking</Label>
             </div>
+            <Separator />
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="nearby-search" className={!userLocation ? "text-muted-foreground" : ""}>
+                  Search Nearby
+                </Label>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleGetUserLocation}
+                  disabled={isLocating}
+                  className="text-xs"
+                >
+                  <LocateFixed className="mr-2 h-4 w-4" />
+                  {isLocating ? "Locating..." : "Use My Location"}
+                </Button>
+              </div>
+              <div className="flex items-center gap-3">
+                <Slider
+                  id="nearby-search"
+                  min={1}
+                  max={15}
+                  step={1}
+                  value={[radius]}
+                  onValueChange={(value) => setRadius(value[0])}
+                  disabled={!userLocation || isLocating}
+                  aria-label="Search radius in kilometers"
+                />
+                <span className="text-sm font-medium w-16 text-right tabular-nums">
+                  {radius} km
+                </span>
+              </div>
+            </div>
           </div>
           <Separator />
           <div className="flex-1 overflow-hidden">
@@ -71,6 +171,7 @@ export default function Home() {
                 locations={filteredLocations}
                 selectedLocation={selectedLocation}
                 onSelectLocation={setSelectedLocation}
+                userLocation={userLocation}
               />
             </ScrollArea>
           </div>
