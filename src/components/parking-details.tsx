@@ -45,9 +45,9 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
   const mapSrc = viewMode === 'satellite' ? satelliteMapSrc : streetViewSrc;
 
   return (
-    <Card className="overflow-hidden flex flex-col animate-in fade-in-50 duration-500">
-      <CardHeader>
-        <CardTitle className="text-2xl md:text-3xl font-headline">{location.name}</CardTitle>
+    <Card className="overflow-hidden flex flex-col animate-in fade-in-50 duration-500 border-0 shadow-none h-full">
+      <CardHeader className="px-4 pt-6 pb-4 md:p-6">
+        <CardTitle className="text-2xl md:text-3xl font-sans">{location.name}</CardTitle>
         <CardDescription>{location.address}</CardDescription>
         <div className="flex items-center gap-2 pt-1">
           <span
@@ -62,7 +62,7 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
           </span>
         </div>
       </CardHeader>
-      <CardContent className="flex-grow flex flex-col gap-4">
+      <CardContent className="flex-grow flex flex-col gap-4 px-4 pb-6 md:p-6 md:pt-0">
         <div>
           <Tabs defaultValue="satellite" onValueChange={(value) => setViewMode(value as 'satellite' | 'streetview')} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
@@ -76,7 +76,7 @@ export function ParkingDetails({ location }: ParkingDetailsProps) {
               </TabsTrigger>
             </TabsList>
           </Tabs>
-          <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-md mt-2">
+          <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg mt-2">
             <iframe
               key={viewMode}
               src={mapSrc}

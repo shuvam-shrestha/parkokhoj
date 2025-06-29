@@ -111,11 +111,11 @@ export default function Home() {
 
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar variant="inset">
         <SidebarHeader className="hidden md:flex">
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3">
             <Logo />
-            <h1 className="text-2xl font-bold font-headline text-primary">Parko Khoj</h1>
+            <h1 className="text-2xl font-bold text-primary">Parko Khoj</h1>
           </Link>
         </SidebarHeader>
         <SidebarContent className="flex flex-col">
@@ -133,7 +133,7 @@ export default function Home() {
                 onCheckedChange={setShowMonthly}
                 aria-label="Show only monthly parking"
               />
-              <Label htmlFor="monthly-parking">Everyday Parking</Label>
+              <Label htmlFor="monthly-parking">Monthly Parking</Label>
             </div>
             <Separator />
             <div className="space-y-3">
@@ -186,12 +186,12 @@ export default function Home() {
         <header className="sticky top-0 z-10 flex items-center justify-between border-b bg-background p-2 md:hidden">
             <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3">
                 <Logo className="!p-1.5" />
-                 <h1 className="text-xl font-bold font-headline text-primary">Parko Khoj</h1>
+                 <h1 className="text-xl font-bold text-primary">Parko Khoj</h1>
             </Link>
             <SidebarTrigger />
         </header>
 
-        <div className="p-2 md:p-4 min-w-0">
+        <div className="min-w-0 md:p-4">
           {selectedLocation ? (
             <ParkingDetails location={selectedLocation} />
           ) : (

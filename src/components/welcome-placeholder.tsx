@@ -2,9 +2,15 @@ import { Search } from 'lucide-react';
 
 export function WelcomePlaceholder() {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center bg-card rounded-xl p-4 md:p-8 border-2 border-dashed">
-      <div className="w-full">
-        <div className="relative aspect-video w-full rounded-lg overflow-hidden shadow-md">
+    <div className="flex flex-col items-center justify-between h-full text-center p-4 md:p-8 min-h-[calc(100vh-80px)] md:min-h-full">
+      <div className="w-full max-w-md mx-auto">
+        <h1 className="text-3xl md:text-5xl font-bold text-foreground mt-8 mb-4 font-sans">
+          Find & Book Parking Instantly
+        </h1>
+        <p className="text-muted-foreground text-base md:text-lg mb-8">
+          Your guide to the best parking spots in Kathmandu. Search, find, and reserve your spot with ease.
+        </p>
+        <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl mx-auto">
             <iframe 
                 src="https://www.youtube.com/embed/WO9hnw9Nxpw?autoplay=1&mute=1&loop=1&playlist=WO9hnw9Nxpw&controls=0&showinfo=0&modestbranding=1" 
                 title="How to park a car" 
@@ -16,13 +22,9 @@ export function WelcomePlaceholder() {
             ></iframe>
         </div>
       </div>
-      <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-6 mb-2 font-headline">Welcome to Parko Khoj</h2>
-      <p className="text-muted-foreground max-w-sm text-base md:text-lg">
-        Your guide to finding the perfect parking spot in Kathmandu.
-      </p>
-      <div className="flex items-center text-sm text-muted-foreground mt-8 bg-background px-4 py-2 rounded-full">
-        <Search className="h-4 w-4 mr-2" />
-        <span>Select a location from the list to see details.</span>
+      <div className="text-sm text-muted-foreground mt-12 pb-4">
+        <Search className="h-4 w-4 mr-2 inline-block" />
+        <span>Select a location from the sidebar to see details.</span>
       </div>
     </div>
   );

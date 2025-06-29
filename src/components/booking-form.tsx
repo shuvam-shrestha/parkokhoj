@@ -83,7 +83,7 @@ export function BookingForm() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button className="w-full mt-4">Request Spot</Button>
+        <Button size="lg" className="w-full mt-4">Request Spot</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
